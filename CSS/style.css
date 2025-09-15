@@ -58,9 +58,10 @@
     }
 
     .img_intro {
-        width: 630px;
-        height: 900px;
+        /*width: 630px;
+        height: 900px; */
         border-radius: 10px;
         max-width: 100%;
+        height: auto;
     }
 </style>
