@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+/* Reset 基本樣式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 頁面基本設定 */
+<style>
+
+    h2 {
+        color: #ff5733;
+        margin-bottom: 10px;
+        text-align: justify;        
+    }
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+    header {
+        background-color: #ff5733;
+        color: white;
+        padding: 20px;
+        font-size: 24px;
+    }
+    section {
+        margin: 20px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .img-left {
+        float: left;
+    }
+    .img-right {
+        float: right;
+    }
+
+    .img_intro {
+        width: 630px;
+        height: 900px;
+        border-radius: 10px;
+    }
+</style>
