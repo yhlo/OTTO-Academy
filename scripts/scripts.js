@@ -8,7 +8,11 @@ const images = document.querySelectorAll('.image-container img');
 if (select) {
     select.addEventListener('change', function () {
         // hide all images first
-        images.forEach(img => img.classList.remove('active'));
+        images.forEach(img => {
+            img.classList.remove('active');
+            // also hide via inline style to be robust on devices/browsers
+            img.style.display = 'none';
+        });
 
         const selectedVal = (this.value || '').trim();
         if (!selectedVal) return; // nothing selected
@@ -17,7 +21,11 @@ if (select) {
         const ids = selectedVal.split(',').map(s => s.trim()).filter(Boolean);
         ids.forEach(id => {
             const el = document.getElementById(id);
-            if (el) el.classList.add('active');
+            if (el) {
+                el.classList.add('active');
+                // make visible via inline style as well (fallback when CSS not loaded)
+                el.style.display = 'block';
+            }
         });
     });
 }
