@@ -8,60 +8,104 @@
 }
 
 /* 頁面基本設定 */
-<style>
 
-    h2 {
-        color: #ff5733;
-        margin-bottom: 10px;
-        text-align: justify;        
-    }
-    p {
-        font-size: 18px;
-        line-height: 1.6;
-        margin-bottom: 15px;
-        text-align: center;
-    }
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        background-color: #f8f8f8;
-    }
-    header {
-        background-color: #ff5733;
-        color: white;
-        padding: 20px;
-        font-size: 24px;
-    }
-    section {
-        margin: 20px;
-        padding: 20px;
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    footer {
-        background-color: #333;
-        color: white;
-        padding: 10px;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-    }
+h2 {
+    color: #ff5733;
+    margin-bottom: 10px;
+    text-align: center;
+}
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.image-container img {
+    display: none;
+    width: 100%;
+    max-width: clamp(200px, 45vw, 600px);
+    height: auto; 
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.image-container img.active {
+    display: block;
+}
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+header {
+    background-color: #ff5733;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+}
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* Video wrapper: smaller responsive YouTube embed, centered */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: clamp(280px, 70vw, 900px); /* control size across devices */
+    margin: 0 auto 20px auto; /* center and add vertical spacing */
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.img_intro {
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .img-left {
-        float: left;
-    }
-    .img-right {
-        float: right;
-    }
+.img_intro:hover {
+    transform: scale(1.05); /* 放大 5% */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 加上陰影 */
+}
 
-    .img_intro {
-        /*width: 630px;
-        height: 900px; */
-        border-radius: 10px;
-        max-width: 100%;
-        height: auto;
-    }
-</style>
+.big-link {
+    display: inline-block;
+    padding: 15px 15px;
+    font-size: 20px;
+    color: white;
+    background-color: #ff5733;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.big-link:hover {
+    background-color: #e04e2b;
+    transform: scale(1.05)
+}
