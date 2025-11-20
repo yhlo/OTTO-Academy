@@ -60,27 +60,6 @@
     <script src="scripts/scripts.js"></script>
 </section>
 
-<!--
-<section>
-    <h2>成員介紹</h2>
-    <p>Freddy 何老師</p>
-    <img src="img/Freddy.png"  alt="Freddy" class="img_intro">
-    <p>Johnny 廖老師</p>
-    <img src="img/Henry.png" alt="Henry" class="img_intro">
-    <p>Alice 羅老師</p>
-    <img src="img/Alice.png" alt="Alice" class="img_intro">
-    <p>Tom 羅老師</p>
-    <img src="img/Tomo.png" alt="Tomo" class="img_intro">
-    <p>Charlie 高老師</p>
-    <img src="img/Charlie.png" alt="Charlie" class="img_intro">
-    <p>Ming 鄭老師</p>
-    <img src="img/Ming.png" alt="Ming" class="img_intro">
-    <p>Apple 盧老師</p>
-    <img src="img/Apple.png" alt="Apple" class="img_intro">  
-</section>
-
-  -->
-
 <section>
     <h2>立即報名</h2>    
     <p><a href="https://forms.gle/AUhMfD6uDnYfLH2t8" class="big-link">報名表單</a></p>
@@ -89,7 +68,33 @@
 
 <section>
     <h2>社群連結</h2>
-    <p><a href="https://www.youtube.com/@OTTOAcademy">YouTube</a> | <a href="https://lin.ee/pSkiQnX">Line 官方帳號</a> </p>
+    <p><a href="https://www.youtube.com/@OTTOAcademy">YouTube</a> | <a href="https://lin.ee/pSkiQnX">Line 官方帳號</a></p> 
+</section>
+
+<section>
+    <div class="contact">
+        <h2>聯絡我們</h2>
+        <form id="contactForm">
+            <label for="cf_name">姓名</label>
+            <input type="text" id="cf_name" name="name" required placeholder="您的姓名">
+
+            <label for="cf_email">電子郵件</label>
+            <input type="email" id="cf_email" name="email" required placeholder="you@gmail.com">
+
+            <label for="cf_subject">主旨</label>
+            <input type="text" id="cf_subject" name="subject" required placeholder="主旨">
+
+            <label for="cf_message">內容</label>
+            <textarea id="cf_message" name="message" rows="5" required placeholder="輸入你想說的話..."></textarea>
+
+            <div class="form-actions">
+                <button type="submit">寄出</button>
+                <button type="button" id="cf_copy">複製</button>
+            </div>
+            <div id="cf_status" aria-live="polite"></div>
+        </form>
+        <p class="contact-note">表單會使用您電腦/手機上的預設郵件應用程式開啟一封預填信件</p>
+    </div>
 </section>
 
 <footer>
