@@ -73,9 +73,36 @@ if (contactForm) {
         const body = encodeURIComponent(bodyLines.join('\n'));
         const mailto = `mailto:${encodeURIComponent(CONTACT_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${body}`;
 
-        // open mail client
-        window.location.href = mailto;
-        status.textContent = '已在你的郵件應用建立草稿（請在郵件應用內完成並寄出）。';
+        // Try to open the user's mail client in several ways for better compatibility
+        let opened = false;
+        try {
+            // create temporary anchor and click it (works well in many browsers)
+            const a = document.createElement('a');
+            a.href = mailto;
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            opened = true;
+        } catch (e) {
+            // ignore
+        }
+
+        if (!opened) {
+            try {
+                // fallback to window.open
+                window.open(mailto);
+                opened = true;
+            } catch (e) {
+                // ignore
+            }
+        }
+
+        if (opened) {
+            status.textContent = '已在你的郵件應用建立草稿（請在郵件應用內完成並寄出）。';
+        } else {
+            status.textContent = '無法直接開啟郵件應用，請使用「複製內容」按鈕，或手動建立郵件並貼上內容。';
+        }
     });
 
     if (copyBtn) {
