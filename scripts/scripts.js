@@ -46,77 +46,37 @@ if (select) {
     });
 }
 
-/* Contact form handling: build mailto: link and open user's mail client */
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    const status = document.getElementById('cf_status');
-    const copyBtn = document.getElementById('cf_copy');
+contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('cf_name').value.trim();
+    const from = document.getElementById('cf_email').value.trim();
+    const subject = document.getElementById('cf_subject').value.trim();
+    const message = document.getElementById('cf_message').value.trim();
 
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const name = document.getElementById('cf_name').value.trim();
-        const from = document.getElementById('cf_email').value.trim();
-        const subject = document.getElementById('cf_subject').value.trim();
-        const message = document.getElementById('cf_message').value.trim();
-
-        if (!from || !subject || !message) {
-            status.textContent = '請填寫完整欄位。';
-            return;
-        }
-
-        // prefilling the email body with name and message
-        const bodyLines = [];
-        if (name) bodyLines.push('姓名: ' + name);
-        bodyLines.push('聯絡信箱: ' + from);
-        bodyLines.push('');
-        bodyLines.push(message);
-        const body = encodeURIComponent(bodyLines.join('\n'));
-        const mailto = `mailto:${encodeURIComponent(CONTACT_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-        // Try to open the user's mail client in several ways for better compatibility
-        let opened = false;
-        try {
-            // create temporary anchor and click it (works well in many browsers)
-            const a = document.createElement('a');
-            a.href = mailto;
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            opened = true;
-        } catch (e) {
-            // ignore
-        }
-
-        if (!opened) {
-            try {
-                // fallback to window.open
-                window.open(mailto);
-                opened = true;
-            } catch (e) {
-                // ignore
-            }
-        }
-
-        if (opened) {
-            status.textContent = '已在你的郵件應用建立草稿（請在郵件應用內完成並寄出）。';
-        } else {
-            status.textContent = '無法直接開啟郵件應用，請使用「複製內容」按鈕，或手動建立郵件並貼上內容。';
-        }
-    });
-
-    if (copyBtn) {
-        copyBtn.addEventListener('click', function () {
-            const name = document.getElementById('cf_name').value.trim();
-            const from = document.getElementById('cf_email').value.trim();
-            const subject = document.getElementById('cf_subject').value.trim();
-            const message = document.getElementById('cf_message').value.trim();
-            const text = `主旨: ${subject}\n姓名: ${name}\n聯絡信箱: ${from}\n\n${message}`;
-            navigator.clipboard?.writeText(text).then(() => {
-                status.textContent = '內容已複製到剪貼簿，你可以貼到郵件或其他地方。';
-            }).catch(() => {
-                status.textContent = '無法複製（可能是不支援剪貼簿），請手動複製。';
-            });
-        });
+    if (!from || !subject || !message) {
+        status.textContent = '請填寫完整欄位。';
+        return;
     }
-}
+
+    const bodyLines = [];
+    if (name) bodyLines.push('姓名: ' + name);
+    bodyLines.push('聯絡信箱: ' + from);
+    bodyLines.push('');
+    bodyLines.push(message.replace(/\n/g, '\n')); // 保留使用者換行
+    const body = encodeURIComponent(bodyLines.join('\n'));
+
+    const mailtoLink = `mailto:${encodeURIComponent(CONTACT_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+    // 連續三連擊，大幅提高開啟成功率
+    location.href = mailtoLink;  // 最有效（尤其手機）
+
+    setTimeout(() => {
+        if (document.hasFocus()) {
+            window.open(mailtoLink, '_blank');
+        }
+    }, 300);
+
+    status.textContent = '正在開啟你的郵件應用程式…（若沒反應請點「複製」按鈕）';
+    status.style.color = 'green';
+});
