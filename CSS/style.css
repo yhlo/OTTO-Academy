@@ -117,3 +117,12 @@ footer {
     background-color: #e04e2b;
     transform: scale(1.05);
 }
+
+/* Centered logo image: match size/behavior of .image-container images */
+.center-image {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: clamp(100px, 45vw, 100px);
+    height: auto;
+}
