@@ -10,7 +10,7 @@
 /* 頁面基本設定 */
 
 h2 {
-    color: #ff5733;
+    color: #ff9f1c;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -50,7 +50,7 @@ body {
 }
 
 header {
-    background-color: #ff5733;
+    background-color: #ff9f1c;
     color: white;
     padding: 20px;
     font-size: 24px;
@@ -107,7 +107,7 @@ footer {
     padding: 15px 15px;
     font-size: 20px;
     color: white;
-    background-color: #ff5733;
+    background-color: #ff9f1c;
     border-radius: 5px;
     text-decoration: none;
     margin-top: 10px;
