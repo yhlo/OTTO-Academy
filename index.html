@@ -1,87 +1,312 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <link rel="stylesheet" href="CSS/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OTTO Academy</title>
+    <title>OTTO Academy 沃稌專業家教 | 來自台大的頂尖師資團隊</title>
+    <meta name="description" content="OTTO Academy 沃稌專業家教：來自台灣大學的家教團隊，由台大畢業學生組成，提供一對一、小班制客製化教學，為您量身打造學習方案，建立自信並提升成績。">
+    <meta property="og:title" content="OTTO Academy 沃稌專業家教 | 來自台大的頂尖師資團隊">
+    <meta property="og:description" content="來自台灣大學的頂尖家教團隊，為您提供高品質客製化國高中課程輔導與學科補強。">
+    <meta property="og:image" content="img/logoT.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
 
 <header>
-    OTTO Academy 沃稌專業家教
+    <div class="container nav-container">
+        <a href="#home" class="logo-link">
+            <img src="img/logoW.png" alt="OTTO Academy Logo">
+            <span>OTTO Academy</span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="#about" class="nav-link">關於我們</a></li>
+            <li><a href="#demo" class="nav-link">上課範例</a></li>
+            <li><a href="#tutors" class="nav-link">師資介紹</a></li>
+            <li><a href="#faqs" class="nav-link">常見問題</a></li>
+            <li><a href="#apply" class="nav-link">立即報名</a></li>
+        </ul>
+    </div>
 </header>
 
-<!-- <img src="img/logoT.png" alt="OTTO Academy Logo" class="center-image"> -->
-
-<section>
-    <img src="img/logoT.png" alt="OTTO Academy Logo" class="center-image">
-</section>
-
-<section>
-    <h2>關於我們</h2>
-    <p>我們是來自台灣大學的家教團隊，由一群具備專業知識與教學熱忱的台大畢業學生組成，</p>
-    <p>致力於提供高品質、一對一、小班制的客製化教學服務。無論是國內外國中、高中課業輔導、學科補強，</p>
-    <p>我們都能依照學生需求量身打造最適合的學習方案，協助學生建立自信、提升成績，並培養自主學習的能力。</p>
-</section>
-
-
-
-<section>
-    <h2>上課範例</h2>
-    <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/ptppnUZlbiY?si=37bFP5Xm439v-Wgz"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="origin"
-                allowfullscreen
-                loading="lazy">
-        </iframe>
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-logo-container">
+            <img src="img/logoT.png" alt="OTTO Academy Logo" class="hero-logo">
+        </div>
+        <div class="hero-badge">
+            <span></span>台大專業師資團隊
+        </div>
+        <h1>卓越學業，<span class="nowrap">從 <span>OTTO Academy</span> 開始</span></h1>
+        <p class="lead">我們是一群熱忱且具備專業學識的台大畢業學生，專注於提供高品質、一對一與小班制的國高中學科補強與客製化教學服務。</p>
+        <div class="hero-actions">
+            <a href="https://forms.gle/AUhMfD6uDnYfLH2t8" class="btn btn-primary" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                立即預約試教
+            </a>
+            <a href="https://lin.ee/pSkiQnX" class="btn btn-secondary" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                聯絡官方 LINE
+            </a>
+        </div>
     </div>
 </section>
 
-
-<section>
-
-    <h2>老師群簡介</h2>
-    <!-- image styles moved to CSS/style.css to ensure consistent centering -->
-
-    <label for="imageSelect">請選擇科目：</label>
-    <select id="imageSelect">
-        <option value="">----- 請選擇 ------</option>
-        <option value="img3,img6">英文 English</option>
-        <option value="img1,img2,img4,img5,img6">數學 Math</option>
-        <option value="img1,img4,img5,img6">物理 Physics</option>
-        <option value="img1,img4,img5,img6">化學 Chemical</option>
-        <option value="img1,img4,img5,img6">生物 Biology</option>
-        <option value="img1,img4,img5">地球科學 Earth Science</option>
-    </select>
-
-    <div class="image-container">
-        <img id="img1" src="img/Freddy.png" alt="Freddy" class="img_intro" style="display:none;">
-        <img id="img2" src="img/Henry.png" alt="Henry" class="img_intro" style="display:none;">
-        <img id="img3" src="img/Alice.png" alt="Alice" class="img_intro" style="display:none;">
-        <img id="img4" src="img/Tomo.png" alt="Tomo" class="img_intro" style="display:none;">
-        <img id="img5" src="img/Charlie.png" alt="Charlie" class="img_intro" style="display:none;">
-        <img id="img6" src="img/Ming.png" alt="Ming" class="img_intro" style="display:none;">
+<section id="about">
+    <div class="container">
+        <div class="section-title-wrapper">
+            <span class="section-tag">About Us</span>
+            <h2>關於我們</h2>
+            <p class="section-desc">我們是來自台灣大學的家教團隊，致力於提供一對一客製化輔導，協助學生建立自主學習能力。</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                </div>
+                <h3>台大精銳師資</h3>
+                <p>我們的團員均來自台灣大學，擁有強大的學科專業知識及熱忱。我們深諳各項升學考試的核心邏輯，能提供最精準的點撥，引導學生攻克學習盲點。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <h3>一對一量身打造</h3>
+                <p>因材施教是我們的核心。我們會根據每位學生的理解速度、學習習慣以及學科弱項，量身規劃課程進度與專屬教材，無論是國中、高中或國外學制均能提供補強。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                </div>
+                <h3>自主學習能力培養</h3>
+                <p>不只是傳授知識，我們更著重教導孩子如何「學會學習」。透過啟發式的問答與學習習慣引導，培養學生的自主學習與邏輯思考能力，為未來長遠學業奠定基石。</p>
+            </div>
+        </div>
     </div>
-    <script src="scripts/scripts.js"></script>
 </section>
 
-<section>
-    <h2>立即報名</h2>    
-    <p><a href="https://forms.gle/AUhMfD6uDnYfLH2t8" class="big-link">報名表單</a></p>
-    <p>填寫表單後也別忘記立即加入我們的Line官方帳號喔！</p>
+<section class="video-section" id="demo">
+    <div class="container">
+        <div class="section-title-wrapper">
+            <span class="section-tag">Demo Class</span>
+            <h2>實際上課範例</h2>
+            <p class="section-desc">透視我們的教學過程，感受清晰且具邏輯的觀念拆解與活潑的教學氛圍。</p>
+        </div>
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/ptppnUZlbiY?si=37bFP5Xm439v-Wgz"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="origin"
+                        allowfullscreen
+                        loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section>
-    <h2>社群連結</h2>
-    <p><a href="https://www.youtube.com/@OTTOAcademy">YouTube</a> | <a href="https://lin.ee/pSkiQnX">Line 官方帳號</a> | <a href="mailto:learnwithotto@gmail.com">Gmail</a></p>
+<section class="tutor-section" id="tutors">
+    <div class="container">
+        <div class="section-title-wrapper">
+            <span class="section-tag">Tutors</span>
+            <h2>優秀師資陣容</h2>
+            <p class="section-desc">篩選科目尋找最適合的家教老師，預設顯示所有師資。</p>
+        </div>
+        
+        <div class="tutor-controls">
+            <label for="imageSelect" class="tutor-label">請選擇科目：</label>
+            <div class="filter-select-wrapper">
+                <select id="imageSelect">
+                    <option value="all">----- 顯示所有科目 ------</option>
+                    <option value="img3,img6">英文 English</option>
+                    <option value="img1,img2,img4,img5,img6">數學 Math</option>
+                    <option value="img1,img4,img5,img6">物理 Physics</option>
+                    <option value="img1,img4,img5,img6">化學 Chemical</option>
+                    <option value="img1,img4,img5,img6">生物 Biology</option>
+                    <option value="img1,img4,img5">地球科學 Earth Science</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <div class="tutor-card" id="tutor-img1">
+                <div class="tutor-image-wrapper">
+                    <img id="img1" src="img/Freddy.png" alt="Freddy" class="img_intro">
+                </div>
+            </div>
+            <div class="tutor-card" id="tutor-img2">
+                <div class="tutor-image-wrapper">
+                    <img id="img2" src="img/Henry.png" alt="Henry" class="img_intro">
+                </div>
+            </div>
+            <div class="tutor-card" id="tutor-img3">
+                <div class="tutor-image-wrapper">
+                    <img id="img3" src="img/Alice.png" alt="Alice" class="img_intro">
+                </div>
+            </div>
+            <div class="tutor-card" id="tutor-img4">
+                <div class="tutor-image-wrapper">
+                    <img id="img4" src="img/Tomo.png" alt="Tomo" class="img_intro">
+                </div>
+            </div>
+            <div class="tutor-card" id="tutor-img5">
+                <div class="tutor-image-wrapper">
+                    <img id="img5" src="img/Charlie.png" alt="Charlie" class="img_intro">
+                </div>
+            </div>
+            <div class="tutor-card" id="tutor-img6">
+                <div class="tutor-image-wrapper">
+                    <img id="img6" src="img/Ming.png" alt="Ming" class="img_intro">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faqs">
+    <div class="container">
+        <div class="section-title-wrapper">
+            <span class="section-tag">FAQ</span>
+            <h2>常見問題 FAQs</h2>
+            <p class="section-desc">關於試教流程、時間調配與學程設計的解答。</p>
+        </div>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-header">
+                    <span>試教如何進行？</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <div class="faq-content-inner">
+                            我們提供一次 1.5 小時的試教服務。在試教過程中，老師會評估學生的目前學習狀況、弱項以及對學科的理解程度，並向家長說明適合的客製化學習方案。這也是學生了解老師教學方式的最佳機會。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-header">
+                    <span>上課時間怎麼安排？</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <div class="faq-content-inner">
+                            我們提供平日晚上與週末白天的彈性上課時段。媒合成功後，學生可依照個人作息與學校行程，直接與家教老師協調出最合適的每週上課時間。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header">
+                    <span>是否可提供試教課程？</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <div class="faq-content-inner">
+                            可以的！我們提供試教機會，歡迎您填寫下方的線上報名表單，或直接點擊加入我們的 LINE 官方帳號進行預約，我們將會儘快為您安排。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header">
+                    <span>課程內容會依照學校進度調整嗎？</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <div class="faq-content-inner">
+                            會的。我們的所有家教課程均為完全客製化，課程設計會完全配合學生學校的教學版本、段考範圍與複習日程，確保學生能夠同步掌握學校學業。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header">
+                    <span>缺課可以補課嗎？</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <div class="faq-content-inner">
+                            可以。學生若需請假，請儘早提前告知老師以利調整課程時間；我們提供彈性補課，若為線上課程，部分老師亦可提供錄影回放進行課後複習。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header">
+                    <span>學費怎麼收費？</span>
+                    <div class="faq-icon"></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <div class="faq-content-inner">
+                            學費依學生的年級（國中、高中或國外學制）、科目困難度以及授課老師的資歷等而有所不同。詳細的收費與收付款方式，歡迎透過 LINE 聯絡我們，我們將為您做詳細的報價與說明。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="apply">
+    <div class="container">
+        <h2>開啟卓越的學習之旅</h2>
+        <p>填寫線上報名表單，或立即加入我們的 LINE 官方帳號，讓台大頂尖師資引導您走向高分與自主學習！</p>
+        <div class="cta-buttons">
+            <a href="https://forms.gle/AUhMfD6uDnYfLH2t8" class="btn btn-cta-primary btn-primary" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                填寫報名表單
+            </a>
+            <a href="https://lin.ee/pSkiQnX" class="btn btn-cta-secondary" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                加入 LINE 官方帳號
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="social-section">
+    <div class="container">
+        <div class="section-title-wrapper" style="margin-bottom: 24px;">
+            <h2>社群連結</h2>
+        </div>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@OTTOAcademy" class="social-link" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                YouTube 頻道
+            </a>
+            <a href="https://lin.ee/pSkiQnX" class="social-link" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                LINE 官方帳號
+            </a>
+            <a href="mailto:learnwithotto@gmail.com" class="social-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Gmail 聯絡信箱
+            </a>
+        </div>
+    </div>
 </section>
 
 <footer>
-    © 2025 OTTO Academy 官方網站
+    <div class="container">
+        © 2026 OTTO Academy 官方網站. All rights reserved.
+    </div>
 </footer>
+
+<script src="scripts/scripts.js"></script>
 
 </body>
 </html>
