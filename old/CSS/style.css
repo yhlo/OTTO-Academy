@@ -541,167 +541,33 @@ select#imageSelect:focus {
   display: none !important;
 }
 
-.tutor-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--accent);
-}
-
-.tutor-card.hiding {
-  opacity: 0;
-  transform: scale(0.92);
-  pointer-events: none;
-}
-
 .tutor-image-wrapper {
   position: relative;
   width: 100%;
-  height: 300px;
   background-color: #f1f5f9;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
 
 .tutor-card img.img_intro {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
   transition: transform 0.5s ease;
   object-fit: cover;
-  object-position: top center;
 }
 
-.image-overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: 10px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.75), transparent);
-  opacity: 0;
-  transition: var(--transition);
-}
-
-.tutor-image-wrapper:hover .image-overlay {
-  opacity: 1;
+.tutor-card:hover {
+  transform: translateY(-16px) scale(1.08);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--accent);
+  z-index: 10;
 }
 
 .tutor-card:hover img.img_intro {
   transform: scale(1.05);
-}
-
-.tutor-info {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.tutor-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-main);
-  margin: 0;
-}
-
-.tutor-major {
-  font-size: 14px;
-  color: var(--text-sub);
-  margin: 0;
-}
-
-.tutor-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 4px 0;
-}
-
-.tutor-tags .tag {
-  font-size: 12px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 999px;
-  transition: var(--transition);
-}
-
-.tutor-tags .tag.tag-active {
-  box-shadow: 0 0 0 2px currentColor;
-  transform: scale(1.06);
-}
-
-.tutor-tags .tag.tag-dim {
-  opacity: 0.35;
-}
-
-.tutor-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.highlight-badge {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--accent-hover);
-  border: 1px solid var(--accent-light);
-  background: transparent;
-  padding: 3px 10px;
-  border-radius: var(--radius, 8px);
-}
-
-.tutor-desc {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-sub);
-  margin: 4px 0 0;
-}
-
-/* Filter select highlight when a subject is active */
-.filter-select-wrapper.active-filter select#imageSelect {
-  border-color: var(--active-color, var(--accent));
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--active-color, var(--accent)) 20%, transparent);
-}
-
-/* Lightbox for full tutor poster */
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-
-.lightbox-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.lightbox-content img {
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 12px;
-  box-shadow: var(--shadow-xl);
-  display: block;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 28px;
-  color: #fff;
-  font-size: 36px;
-  line-height: 1;
-  cursor: pointer;
 }
 
 /* Call to Action (CTA) Section */
