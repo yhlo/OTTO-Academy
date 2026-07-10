@@ -62,6 +62,29 @@ const TUTORS = [
     }
 ];
 
+// ---------------------------------------------------------------------
+// 上課範例影片：要新增影片，複製一行改 YouTube ID 跟標題就好。
+// id 是 YouTube 網址中 watch?v= 後面那串（或 youtu.be/ 後面那串）
+// subject 選填，可填 english / math / physics / chemistry / biology / earth，
+// 會顯示對應顏色的科目小標籤。
+// ---------------------------------------------------------------------
+const VIDEOS = [
+    { id: 'ptppnUZlbiY', title: '上課實錄精選', subject: '' },
+    { id: 'omRez5-bIpY', title: '示範影片（暫用）', subject: '' },
+    // { id: '影片ID', title: '影片標題', subject: 'math' },
+];
+
+// ---------------------------------------------------------------------
+// 上課剪影：照片放進 img/gallery/ 資料夾，然後在這裡加一行。
+// caption 會顯示在照片下方，留空字串也可以。
+// 陣列是空的時候，整個「上課剪影」區塊會自動隱藏。
+// ---------------------------------------------------------------------
+const GALLERY = [
+    // { src: 'img/gallery/photo2.jpg', caption: '小班制英文課' },
+    { src: 'img/gallery/photo-20260711-2.jpg', caption: '暑期理化先修班' },
+    { src: 'img/gallery/photo-20260711-3.jpg', caption: '科展專題指導' },
+];
+
 const SUBJECT_LABELS = {
     english: '英文',
     math: '數學',
@@ -121,6 +144,74 @@ function renderTutors() {
 }
 
 // ---------------------------------------------------------------------
+// 上課範例影片播放清單：影片超過一部時，播放器下方會出現切換按鈕
+// ---------------------------------------------------------------------
+function renderVideoPlaylist() {
+    const player = document.getElementById('demoPlayer');
+    const playlist = document.getElementById('videoPlaylist');
+    if (!player || !playlist || VIDEOS.length === 0) return;
+
+    // 預設載入第一部影片
+    player.src = `https://www.youtube.com/embed/${VIDEOS[0].id}`;
+
+    // 只有一部影片就不顯示切換按鈕
+    if (VIDEOS.length < 2) {
+        playlist.style.display = 'none';
+        return;
+    }
+
+    playlist.innerHTML = VIDEOS.map((video, i) => {
+        const color = SUBJECT_COLORS[video.subject];
+        const tag = color
+            ? `<span class="video-subject-tag" style="background:${color.bg};color:${color.text};">${SUBJECT_LABELS[video.subject]}</span>`
+            : '';
+        return `
+            <button class="video-item${i === 0 ? ' active' : ''}" data-video-id="${video.id}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                <span class="video-item-title">${video.title}</span>
+                ${tag}
+            </button>
+        `;
+    }).join('');
+
+    playlist.querySelectorAll('.video-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('active')) return;
+            player.src = `https://www.youtube.com/embed/${btn.dataset.videoId}`;
+            playlist.querySelectorAll('.video-item').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+}
+
+// ---------------------------------------------------------------------
+// 上課剪影照片牆：點照片用 lightbox 放大，沒有照片時整區隱藏
+// ---------------------------------------------------------------------
+function renderGallery() {
+    const section = document.getElementById('gallery');
+    const container = document.getElementById('galleryContainer');
+    if (!section || !container) return;
+
+    if (GALLERY.length === 0) {
+        section.style.display = 'none';
+        return;
+    }
+
+    container.innerHTML = GALLERY.map(photo => `
+        <figure class="gallery-item" data-full-img="${photo.src}">
+            <img src="${photo.src}" alt="${photo.caption || '上課剪影'}" loading="lazy">
+            ${photo.caption ? `<figcaption>${photo.caption}</figcaption>` : ''}
+        </figure>
+    `).join('');
+
+    container.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+            openLightbox(item.dataset.fullImg);
+        });
+    });
+}
+
+// ---------------------------------------------------------------------
 // Lightbox：點卡片圖片彈出完整介紹海報
 // ---------------------------------------------------------------------
 function ensureLightbox() {
@@ -164,6 +255,8 @@ function closeLightbox() {
 
 document.addEventListener('DOMContentLoaded', () => {
     renderTutors();
+    renderVideoPlaylist();
+    renderGallery();
 
     // 1. FAQ Accordion Toggle
     const faqItems = document.querySelectorAll('.faq-item');

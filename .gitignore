@@ -1,0 +1,8 @@
+# 原始照片只留在本機，處理過的才放進 img/gallery
+tools/photo_in/
+
+# 本機開發工具設定
+.claude/
+
+# Python 快取
+__pycache__/
