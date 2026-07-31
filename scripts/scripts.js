@@ -70,7 +70,7 @@ const TUTORS = [
 // ---------------------------------------------------------------------
 const VIDEOS = [
     { id: 'ptppnUZlbiY', title: '上課實錄精選', subject: '' },
-    { id: 'omRez5-bIpY', title: '示範影片（暫用）', subject: '' },
+    // { id: 'omRez5-bIpY', title: '示範影片（暫用）', subject: '' },  // 暫時隱藏，等正式影片再打開
     // { id: '影片ID', title: '影片標題', subject: 'math' },
 ];
 
