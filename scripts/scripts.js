@@ -83,6 +83,8 @@ const GALLERY = [
     // { src: 'img/gallery/photo2.jpg', caption: '小班制英文課' },
     { src: 'img/gallery/photo-20260711-2.jpg', caption: '暑期理化先修班' },
     { src: 'img/gallery/photo-20260711-3.jpg', caption: '科展專題指導' },
+    { src: 'img/gallery/board-meiosis.jpg', caption: '減數分裂 I、II 板書解析' },
+    { src: 'img/gallery/board-cellcycle.jpg', caption: '細胞週期與有絲分裂板書' },
 ];
 
 const SUBJECT_LABELS = {
