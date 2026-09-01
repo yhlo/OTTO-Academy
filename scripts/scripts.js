@@ -83,8 +83,16 @@ const GALLERY = [
     // { src: 'img/gallery/photo2.jpg', caption: '小班制英文課' },
     { src: 'img/gallery/photo-20260711-2.jpg', caption: '暑期理化先修班' },
     { src: 'img/gallery/photo-20260711-3.jpg', caption: '科展專題指導' },
-    { src: 'img/gallery/board-meiosis.jpg', caption: '減數分裂 I、II 板書解析' },
-    { src: 'img/gallery/board-cellcycle.jpg', caption: '細胞週期與有絲分裂板書' },
+];
+
+// ---------------------------------------------------------------------
+// 教學板書：老師上課的板書照片，跟上面師生互動的「上課剪影」分開展示。
+// 照片放進 img/board/ 資料夾，然後在這裡加一行。
+// 陣列是空的時候，整個「教學板書」區塊會自動隱藏。
+// ---------------------------------------------------------------------
+const BOARD_NOTES = [
+    { src: 'img/board/board-meiosis.jpg', caption: '減數分裂 I、II 過程圖解' },
+    { src: 'img/board/board-cellcycle.jpg', caption: '細胞週期與有絲分裂' },
 ];
 
 const SUBJECT_LABELS = {
@@ -214,6 +222,33 @@ function renderGallery() {
 }
 
 // ---------------------------------------------------------------------
+// 教學板書照片牆：跟上課剪影同樣的呈現方式，但區塊與資料各自獨立
+// ---------------------------------------------------------------------
+function renderBoardNotes() {
+    const section = document.getElementById('board-notes');
+    const container = document.getElementById('boardNotesContainer');
+    if (!section || !container) return;
+
+    if (BOARD_NOTES.length === 0) {
+        section.style.display = 'none';
+        return;
+    }
+
+    container.innerHTML = BOARD_NOTES.map(photo => `
+        <figure class="gallery-item" data-full-img="${photo.src}">
+            <img src="${photo.src}" alt="${photo.caption || '教學板書'}" loading="lazy">
+            ${photo.caption ? `<figcaption>${photo.caption}</figcaption>` : ''}
+        </figure>
+    `).join('');
+
+    container.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+            openLightbox(item.dataset.fullImg);
+        });
+    });
+}
+
+// ---------------------------------------------------------------------
 // Lightbox：點卡片圖片彈出完整介紹海報
 // ---------------------------------------------------------------------
 function ensureLightbox() {
@@ -258,6 +293,7 @@ function closeLightbox() {
 document.addEventListener('DOMContentLoaded', () => {
     renderTutors();
     renderVideoPlaylist();
+    renderBoardNotes();
     renderGallery();
 
     // 1. FAQ Accordion Toggle
