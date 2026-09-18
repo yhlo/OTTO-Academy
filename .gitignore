@@ -6,3 +6,7 @@ tools/photo_in/
 
 # Python 快取
 __pycache__/
+
+# Node / Wrangler
+node_modules/
+.wrangler/

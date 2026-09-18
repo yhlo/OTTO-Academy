@@ -290,9 +290,89 @@ function closeLightbox() {
     document.body.style.overflow = '';
 }
 
+// ---------------------------------------------------------------------
+// AI 小幫手：呼叫 Cloudflare Pages Function（/api/chat）取得回覆。
+// 對話紀錄只存在瀏覽器記憶體中，重新整理頁面就會清空，不會送去後端儲存。
+// ---------------------------------------------------------------------
+function initAiChatWidget() {
+    const widget = document.getElementById('aiChatWidget');
+    const toggle = document.getElementById('aiChatToggle');
+    const panel = document.getElementById('aiChatPanel');
+    const messagesEl = document.getElementById('aiChatMessages');
+    const form = document.getElementById('aiChatForm');
+    const input = document.getElementById('aiChatInput');
+    if (!widget || !toggle || !panel || !messagesEl || !form || !input) return;
+
+    const history = [];
+    let sending = false;
+
+    function appendMessage(text, className) {
+        const msg = document.createElement('div');
+        msg.className = `ai-chat-msg ${className}`;
+        msg.textContent = text; // 一律用 textContent，避免任何 HTML/腳本被注入
+        messagesEl.appendChild(msg);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        return msg;
+    }
+
+    function setOpen(open) {
+        widget.classList.toggle('open', open);
+        panel.hidden = !open;
+        toggle.setAttribute('aria-expanded', String(open));
+        if (open) input.focus();
+    }
+
+    toggle.addEventListener('click', () => {
+        setOpen(panel.hidden);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !panel.hidden) setOpen(false);
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const question = input.value.trim();
+        if (!question || sending) return;
+
+        appendMessage(question, 'ai-chat-msg-user');
+        history.push({ role: 'user', content: question });
+        input.value = '';
+        sending = true;
+        input.disabled = true;
+
+        const loadingMsg = appendMessage('思考中…', 'ai-chat-msg-loading');
+
+        try {
+            const res = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: question, history }),
+            });
+            const data = await res.json().catch(() => ({}));
+            loadingMsg.remove();
+
+            if (!res.ok || data.error) {
+                appendMessage(data.error || '發生錯誤，請稍後再試。', 'ai-chat-msg-error');
+            } else {
+                appendMessage(data.reply, 'ai-chat-msg-bot');
+                history.push({ role: 'assistant', content: data.reply });
+            }
+        } catch (err) {
+            loadingMsg.remove();
+            appendMessage('無法連線到小幫手，請確認網路連線或改用 LINE 聯絡我們。', 'ai-chat-msg-error');
+        } finally {
+            sending = false;
+            input.disabled = false;
+            input.focus();
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderTutors();
     renderVideoPlaylist();
+    initAiChatWidget();
     renderBoardNotes();
     renderGallery();
 

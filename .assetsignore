@@ -1,0 +1,14 @@
+# 這些不是網站要對外提供的靜態檔案，部署時不上傳到 assets。
+node_modules/
+.wrangler/
+package.json
+package-lock.json
+worker/
+wrangler.jsonc
+tools/
+old/
+doc/
+.vscode/
+.gitignore
+README.md
+CNAME
