@@ -978,6 +978,13 @@ footer {
   overflow: hidden;
 }
 
+/* [hidden] 的特異度跟上面的 class 選擇器一樣，但作者樣式的 display:flex
+   永遠贏過瀏覽器內建的 [hidden]{display:none}，所以要額外寫一條蓋掉它，
+   否則 panel.hidden = true 完全不會讓面板真的消失。 */
+.ai-chat-panel[hidden] {
+  display: none;
+}
+
 .ai-chat-header {
   padding: 14px 10px 14px 18px;
   background-color: var(--accent);
