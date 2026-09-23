@@ -346,8 +346,13 @@
 
     <div class="ai-chat-panel" id="aiChatPanel" hidden>
         <div class="ai-chat-header">
-            <span>OTTO 小幫手</span>
-            <span class="ai-chat-header-sub">試教、時段、收費都可以問問看</span>
+            <div class="ai-chat-header-text">
+                <span>OTTO 小幫手</span>
+                <span class="ai-chat-header-sub">試教、時段、收費都可以問問看</span>
+            </div>
+            <button type="button" class="ai-chat-header-close" id="aiChatHeaderClose" aria-label="關閉 OTTO 小幫手">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
         </div>
         <div class="ai-chat-messages" id="aiChatMessages">
             <div class="ai-chat-msg ai-chat-msg-bot">您好！我是 OTTO Academy 的線上小幫手，關於試教流程、上課時段或收費方式都可以問我 🙂</div>

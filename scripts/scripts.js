@@ -297,11 +297,12 @@ function closeLightbox() {
 function initAiChatWidget() {
     const widget = document.getElementById('aiChatWidget');
     const toggle = document.getElementById('aiChatToggle');
+    const headerClose = document.getElementById('aiChatHeaderClose');
     const panel = document.getElementById('aiChatPanel');
     const messagesEl = document.getElementById('aiChatMessages');
     const form = document.getElementById('aiChatForm');
     const input = document.getElementById('aiChatInput');
-    if (!widget || !toggle || !panel || !messagesEl || !form || !input) return;
+    if (!widget || !toggle || !headerClose || !panel || !messagesEl || !form || !input) return;
 
     const history = [];
     let sending = false;
@@ -319,11 +320,28 @@ function initAiChatWidget() {
         widget.classList.toggle('open', open);
         panel.hidden = !open;
         toggle.setAttribute('aria-expanded', String(open));
-        if (open) input.focus();
+        toggle.setAttribute('aria-label', open ? '關閉 OTTO 小幫手' : '開啟 OTTO 小幫手');
+        if (open) {
+            input.focus();
+        } else {
+            input.blur(); // 主動收起手機鍵盤，避免鍵盤把關閉按鈕擠出可視範圍
+        }
     }
 
     toggle.addEventListener('click', () => {
         setOpen(panel.hidden);
+    });
+
+    // 面板內建一個永遠在畫面上方、不會被手機鍵盤擋住的關閉按鈕，
+    // 不依賴右下角那顆會隨鍵盤彈出而移位的浮動按鈕。
+    headerClose.addEventListener('click', () => setOpen(false));
+
+    // 保險機制：點擊面板以外的任何地方也會關閉，
+    // 避免任何單一按鈕失效時完全沒有辦法關掉面板。
+    document.addEventListener('click', (e) => {
+        if (panel.hidden) return;
+        if (widget.contains(e.target)) return;
+        setOpen(false);
     });
 
     document.addEventListener('keydown', (e) => {
